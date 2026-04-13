@@ -1,0 +1,45 @@
+name: Deploy Azure Function App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  AZURE_FUNCTIONAPP_NAME: scnet-rdb-mon
+  AZURE_FUNCTIONAPP_PROJECT_PATH: ./Servercyde.Monitoring.Functions
+  DOTNET_VERSION: 9.0.x
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore
+        run: dotnet restore ./Servercyde.Monitoring.sln
+
+      - name: Build
+        run: dotnet build ./Servercyde.Monitoring.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test ./Servercyde.Monitoring.sln --configuration Release --no-build --filter "Category!=IntegrationTest"
+
+      - name: Publish Function App
+        run: dotnet publish ${{ env.AZURE_FUNCTIONAPP_PROJECT_PATH }}/Servercyde.Monitoring.Functions.csproj --configuration Release --output ./publish
+
+      - name: Deploy to Azure Functions
+        uses: Azure/functions-action@v1
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          package: ./publish
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          sku: flexconsumption

@@ -1,0 +1,9 @@
+﻿{
+  "profiles": {
+    "Servercyde.Monitoring.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7286",
+      "launchBrowser": false
+    }
+  }
+}

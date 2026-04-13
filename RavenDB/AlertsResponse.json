@@ -1,0 +1,37 @@
+{
+  "Results": [
+    {
+      "Id": "PerformanceHint/SlowIO/slow-writes",
+      "CreatedAt": "2025-01-07T17:01:31.6164214Z",
+      "Type": "PerformanceHint",
+      "Title": "An extremely slow write to disk",
+      "Message": "We have detected very slow writes",
+      "Severity": "Info",
+      "IsPersistent": true,
+      "Database": "retina-dev",
+      "Source": "slow-writes",
+      "HintType": "SlowIO",
+      "Details": {
+        "Writes": {
+          "JournalWrite//ravendb/data/Databases/retina-dev/Journals/0000000000000000155.journal": {
+            "Path": "/ravendb/data/Databases/retina-dev/Journals/0000000000000000155.journal",
+            "DataWrittenInMb": 0.13671875,
+            "DurationInSec": 0.939502,
+            "SpeedInMbPerSec": 0.145522574725759,
+            "Date": "2025-01-07T17:00:53.9774070Z",
+            "Type": "JournalWrite"
+          },
+          "JournalWrite//ravendb/data/Databases/retina-dev/Indexes/LastLoginIndex/Journals/0000000000000000365.journal": {
+            "Path": "/ravendb/data/Databases/retina-dev/Indexes/LastLoginIndex/Journals/0000000000000000365.journal",
+            "DataWrittenInMb": 0.01171875,
+            "DurationInSec": 1.2309941,
+            "SpeedInMbPerSec": 0.00951974505807948,
+            "Date": "2025-01-07T17:00:53.9157370Z",
+            "Type": "JournalWrite"
+          }
+        }
+      }
+    }
+  ],
+  "TotalResults": 1
+}

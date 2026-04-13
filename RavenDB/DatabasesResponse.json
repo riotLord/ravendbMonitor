@@ -1,0 +1,856 @@
+﻿{
+    "Databases": [
+      {
+        "HasRevisionsConfiguration": true,
+        "HasExpirationConfiguration": false,
+        "HasRefreshConfiguration": true,
+        "HasDataArchivalConfiguration": false,
+        "IsAdmin": true,
+        "IsEncrypted": false,
+        "Name": "breastcancer-servercyde-dev",
+        "TotalSize": {
+          "HumaneSize": "257.69 MBytes",
+          "SizeInBytes": 270204928
+        },
+        "TempBuffersSize": {
+          "HumaneSize": "0 Bytes",
+          "SizeInBytes": 0
+        },
+        "IndexingErrors": 0,
+        "Alerts": 0,
+        "PerformanceHints": 1,
+        "UpTime": null,
+        "MountPointsUsage": [
+          {
+            "Name": "breastcancer-servercyde-dev",
+            "Type": "Documents",
+            "UsedSpace": 150994944,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Configuration",
+            "Type": "Configuration",
+            "UsedSpace": 196608,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/ApplicationUsers/ByUserName",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "IdentityUserIndex",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/PatientDatas/ByIsDeletedAndPatientId",
+            "Type": "Index",
+            "UsedSpace": 33816576,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/UserInvitations/ByAcceptedAtAndCodeAndEmailAddressAndExpiresOnAndIsActive",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/LoginRecords/ByUserId",
+            "Type": "Index",
+            "UsedSpace": 33685504,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/UserInfos/ByIsActiveAndLockoutDateAndUserId",
+            "Type": "Index",
+            "UsedSpace": 17039360,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "LastLoginIndex",
+            "Type": "Index",
+            "UsedSpace": 8912896,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21119131648,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 4.95977433699879,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 78,
+              "QueueLength": 0
+            }
+          }
+        ],
+        "DocumentsCount": 616,
+        "IndexesCount": 7,
+        "RejectClients": false,
+        "CachedDatabaseInfo": true,
+        "Disabled": false,
+        "LockMode": "Unlock",
+        "IndexingStatus": null,
+        "NodesTopology": {
+          "Members": [
+            {
+              "NodeTag": "A",
+              "NodeUrl": "https://a.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "C",
+              "NodeUrl": "https://c.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "B",
+              "NodeUrl": "https://b.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            }
+          ],
+          "Promotables": [],
+          "Rehabs": [],
+          "Status": {
+            "A": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "C": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "B": {
+              "LastStatus": "Ok",
+              "LastError": null
+            }
+          },
+          "PriorityOrder": [],
+          "DynamicNodesDistribution": false
+        },
+        "DeletionInProgress": {
+  
+        },
+        "Environment": "None",
+        "BackupInfo": {
+          "LastBackup": "2025-03-31T13:27:00.0000000",
+          "IntervalUntilNextBackupInSec": 1215.4516066,
+          "BackupTaskType": "Periodic",
+          "Destinations": [
+            "AmazonS3"
+          ]
+        }
+      },
+      {
+        "HasRevisionsConfiguration": true,
+        "HasExpirationConfiguration": false,
+        "HasRefreshConfiguration": false,
+        "HasDataArchivalConfiguration": false,
+        "IsAdmin": true,
+        "IsEncrypted": false,
+        "Name": "developer-playground-anthony",
+        "TotalSize": {
+          "HumaneSize": "164.75 MBytes",
+          "SizeInBytes": 172752896
+        },
+        "TempBuffersSize": {
+          "HumaneSize": "0 Bytes",
+          "SizeInBytes": 0
+        },
+        "IndexingErrors": 0,
+        "Alerts": 0,
+        "PerformanceHints": 1,
+        "UpTime": null,
+        "MountPointsUsage": [
+          {
+            "Name": "developer-playground-anthony",
+            "Type": "Documents",
+            "UsedSpace": 138412032,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21122936832,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 7.66033783035605,
+              "IoWriteOperations": 6.91142212068437,
+              "ReadThroughputInKb": 1570,
+              "WriteThroughputInKb": 88,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Configuration",
+            "Type": "Configuration",
+            "UsedSpace": 131072,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21122936832,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 7.66033783035605,
+              "IoWriteOperations": 6.91142212068437,
+              "ReadThroughputInKb": 1570,
+              "WriteThroughputInKb": 88,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/LoginRecords/By@idAndAtAndClaims[].ValueAndClams.KeyAndClams.ValueAndidAndIdpAndIdPAndSearch(Claims[].Key)AndSearch(Claims[])AndSearch(UserId)",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21122936832,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 7.66033783035605,
+              "IoWriteOperations": 6.91142212068437,
+              "ReadThroughputInKb": 1570,
+              "WriteThroughputInKb": 88,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/@empty/ByUserId",
+            "Type": "Index",
+            "UsedSpace": 8650752,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21122936832,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 7.66033783035605,
+              "IoWriteOperations": 6.91142212068437,
+              "ReadThroughputInKb": 1570,
+              "WriteThroughputInKb": 88,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/UserInvitations/By'ExpiresOn'",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21122936832,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 7.66033783035605,
+              "IoWriteOperations": 6.91142212068437,
+              "ReadThroughputInKb": 1570,
+              "WriteThroughputInKb": 88,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/UserInfos/ByIsActiveAndLockoutDateAndUserId",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21122936832,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 7.66033783035605,
+              "IoWriteOperations": 6.91142212068437,
+              "ReadThroughputInKb": 1570,
+              "WriteThroughputInKb": 88,
+              "QueueLength": 0
+            }
+          }
+        ],
+        "DocumentsCount": 5,
+        "IndexesCount": 4,
+        "RejectClients": false,
+        "CachedDatabaseInfo": true,
+        "Disabled": false,
+        "LockMode": "Unlock",
+        "IndexingStatus": null,
+        "NodesTopology": {
+          "Members": [
+            {
+              "NodeTag": "A",
+              "NodeUrl": "https://a.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            }
+          ],
+          "Promotables": [],
+          "Rehabs": [],
+          "Status": {
+            "A": {
+              "LastStatus": "Ok",
+              "LastError": null
+            }
+          },
+          "PriorityOrder": [],
+          "DynamicNodesDistribution": false
+        },
+        "DeletionInProgress": {
+  
+        },
+        "Environment": "None",
+        "BackupInfo": {
+          "LastBackup": "2025-03-31T13:27:00.0000000",
+          "IntervalUntilNextBackupInSec": 1215.4509331,
+          "BackupTaskType": "Periodic",
+          "Destinations": [
+            "AmazonS3"
+          ]
+        }
+      },
+      {
+        "Name": "retina-dev",
+        "TotalSize": {
+          "HumaneSize": "268.44 MBytes",
+          "SizeInBytes": 281477120
+        },
+        "TempBuffersSize": {
+          "HumaneSize": "1.19 MBytes",
+          "SizeInBytes": 1245184
+        },
+        "UpTime": "00:13:08.1822032",
+        "BackupInfo": {
+          "LastBackup": "2025-03-31T13:28:30.2703574",
+          "IntervalUntilNextBackupInSec": 1215.4498692,
+          "BackupTaskType": "Periodic",
+          "Destinations": [
+            "AmazonS3"
+          ]
+        },
+        "Alerts": 0,
+        "PerformanceHints": 1,
+        "IndexingErrors": 0,
+        "DocumentsCount": 1277,
+        "IndexingStatus": "Running",
+        "Disabled": false,
+        "LockMode": "Unlock",
+        "IsAdmin": true,
+        "IsEncrypted": false,
+        "RejectClients": false,
+        "HasRevisionsConfiguration": true,
+        "HasExpirationConfiguration": true,
+        "HasRefreshConfiguration": true,
+        "HasDataArchivalConfiguration": false,
+        "IndexesCount": 7,
+        "NodesTopology": {
+          "Members": [
+            {
+              "NodeTag": "A",
+              "NodeUrl": "https://a.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "B",
+              "NodeUrl": "https://b.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "C",
+              "NodeUrl": "https://c.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            }
+          ],
+          "Promotables": [],
+          "Rehabs": [],
+          "Status": {
+            "A": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "B": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "C": {
+              "LastStatus": "Ok",
+              "LastError": null
+            }
+          },
+          "PriorityOrder": [],
+          "DynamicNodesDistribution": false
+        },
+        "ReplicationFactor": 3,
+        "DynamicNodesDistribution": false,
+        "DeletionInProgress": {
+  
+        },
+        "Environment": "None"
+      },
+      {
+        "Name": "retina-prism-dev",
+        "TotalSize": {
+          "HumaneSize": "199.13 MBytes",
+          "SizeInBytes": 208797696
+        },
+        "TempBuffersSize": {
+          "HumaneSize": "1.88 MBytes",
+          "SizeInBytes": 1966080
+        },
+        "UpTime": "12.14:05:29.1203220",
+        "BackupInfo": {
+          "LastBackup": "2025-03-31T13:27:00.0000000",
+          "IntervalUntilNextBackupInSec": 1215.449114,
+          "BackupTaskType": "Periodic",
+          "Destinations": [
+            "AmazonS3"
+          ]
+        },
+        "Alerts": 0,
+        "PerformanceHints": 1,
+        "IndexingErrors": 0,
+        "DocumentsCount": 1192,
+        "IndexingStatus": "Running",
+        "Disabled": false,
+        "LockMode": "Unlock",
+        "IsAdmin": true,
+        "IsEncrypted": false,
+        "RejectClients": false,
+        "HasRevisionsConfiguration": true,
+        "HasExpirationConfiguration": true,
+        "HasRefreshConfiguration": true,
+        "HasDataArchivalConfiguration": false,
+        "IndexesCount": 6,
+        "NodesTopology": {
+          "Members": [
+            {
+              "NodeTag": "A",
+              "NodeUrl": "https://a.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "C",
+              "NodeUrl": "https://c.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "B",
+              "NodeUrl": "https://b.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            }
+          ],
+          "Promotables": [],
+          "Rehabs": [],
+          "Status": {
+            "A": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "C": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "B": {
+              "LastStatus": "Ok",
+              "LastError": null
+            }
+          },
+          "PriorityOrder": [],
+          "DynamicNodesDistribution": false
+        },
+        "ReplicationFactor": 3,
+        "DynamicNodesDistribution": false,
+        "DeletionInProgress": {
+  
+        },
+        "Environment": "None"
+      },
+      {
+        "Name": "retina-sightmd-dev",
+        "TotalSize": {
+          "HumaneSize": "200.38 MBytes",
+          "SizeInBytes": 210108416
+        },
+        "TempBuffersSize": {
+          "HumaneSize": "3.25 MBytes",
+          "SizeInBytes": 3407872
+        },
+        "UpTime": "13.01:25:49.0859830",
+        "BackupInfo": {
+          "LastBackup": "2025-03-31T13:27:00.0000000",
+          "IntervalUntilNextBackupInSec": 1215.4482474,
+          "BackupTaskType": "Periodic",
+          "Destinations": [
+            "AmazonS3"
+          ]
+        },
+        "Alerts": 0,
+        "PerformanceHints": 1,
+        "IndexingErrors": 0,
+        "DocumentsCount": 136,
+        "IndexingStatus": "Running",
+        "Disabled": false,
+        "LockMode": "Unlock",
+        "IsAdmin": true,
+        "IsEncrypted": false,
+        "RejectClients": false,
+        "HasRevisionsConfiguration": true,
+        "HasExpirationConfiguration": true,
+        "HasRefreshConfiguration": true,
+        "HasDataArchivalConfiguration": false,
+        "IndexesCount": 7,
+        "NodesTopology": {
+          "Members": [
+            {
+              "NodeTag": "A",
+              "NodeUrl": "https://a.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "B",
+              "NodeUrl": "https://b.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "C",
+              "NodeUrl": "https://c.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            }
+          ],
+          "Promotables": [],
+          "Rehabs": [],
+          "Status": {
+            "A": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "B": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "C": {
+              "LastStatus": "Ok",
+              "LastError": null
+            }
+          },
+          "PriorityOrder": [],
+          "DynamicNodesDistribution": false
+        },
+        "ReplicationFactor": 3,
+        "DynamicNodesDistribution": false,
+        "DeletionInProgress": {
+  
+        },
+        "Environment": "None"
+      },
+      {
+        "HasRevisionsConfiguration": true,
+        "HasExpirationConfiguration": false,
+        "HasRefreshConfiguration": true,
+        "HasDataArchivalConfiguration": false,
+        "IsAdmin": true,
+        "IsEncrypted": false,
+        "Name": "vytalize-dev",
+        "TotalSize": {
+          "HumaneSize": "129.13 MBytes",
+          "SizeInBytes": 135397376
+        },
+        "TempBuffersSize": {
+          "HumaneSize": "0 Bytes",
+          "SizeInBytes": 0
+        },
+        "IndexingErrors": 0,
+        "Alerts": 0,
+        "PerformanceHints": 0,
+        "UpTime": null,
+        "MountPointsUsage": [
+          {
+            "Name": "vytalize-dev",
+            "Type": "Documents",
+            "UsedSpace": 67633152,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21336223744,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 6.6871287946943,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 488,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Configuration",
+            "Type": "Configuration",
+            "UsedSpace": 131072,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21336223744,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 6.6871287946943,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 488,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "IdentityUserIndex",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21336223744,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 6.6871287946943,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 488,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/LoginRecords/ByIdPAndUserId",
+            "Type": "Index",
+            "UsedSpace": 33685504,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21336223744,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 6.6871287946943,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 488,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/UserInvitations/ByAcceptedAtAndCodeAndEmailAddressAndExpiresOnAndIsActive",
+            "Type": "Index",
+            "UsedSpace": 8519680,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21336223744,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 6.6871287946943,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 488,
+              "QueueLength": 0
+            }
+          },
+          {
+            "Name": "Auto/UserInfos/ByIsActiveAndLockoutDateAndUserId",
+            "Type": "Index",
+            "UsedSpace": 16908288,
+            "UsedSpaceByTempBuffers": 0,
+            "DiskSpaceResult": {
+              "DriveName": "/",
+              "VolumeLabel": null,
+              "TotalFreeSpaceInBytes": 21336223744,
+              "TotalSizeInBytes": 33104523264
+            },
+            "IoStatsResult": {
+              "IoReadOperations": 0,
+              "IoWriteOperations": 6.6871287946943,
+              "ReadThroughputInKb": 0,
+              "WriteThroughputInKb": 488,
+              "QueueLength": 0
+            }
+          }
+        ],
+        "DocumentsCount": 148,
+        "IndexesCount": 4,
+        "RejectClients": false,
+        "CachedDatabaseInfo": true,
+        "Disabled": false,
+        "LockMode": "Unlock",
+        "IndexingStatus": null,
+        "NodesTopology": {
+          "Members": [
+            {
+              "NodeTag": "A",
+              "NodeUrl": "https://a.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "C",
+              "NodeUrl": "https://c.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            },
+            {
+              "NodeTag": "B",
+              "NodeUrl": "https://b.azure-useast.servercydemanagement.ravendb.cloud",
+              "ResponsibleNode": null
+            }
+          ],
+          "Promotables": [],
+          "Rehabs": [],
+          "Status": {
+            "A": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "C": {
+              "LastStatus": "Ok",
+              "LastError": null
+            },
+            "B": {
+              "LastStatus": "Ok",
+              "LastError": null
+            }
+          },
+          "PriorityOrder": [],
+          "DynamicNodesDistribution": false
+        },
+        "DeletionInProgress": {
+  
+        },
+        "Environment": "None",
+        "BackupInfo": {
+          "LastBackup": "2025-03-31T13:27:00.0000000",
+          "IntervalUntilNextBackupInSec": 1215.447631,
+          "BackupTaskType": "Periodic",
+          "Destinations": [
+            "AmazonS3"
+          ]
+        }
+      }
+    ]
+  }
