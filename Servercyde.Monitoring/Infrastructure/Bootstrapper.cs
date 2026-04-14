@@ -29,6 +29,7 @@ public static class Bootstrapper
         services.Configure<RavenConfig>(ravenConfigSection);
 
         var ravenConfig = new RavenConfig(); ravenConfigSection.Bind(ravenConfig);
+        LogConfigurationPresence(logger, configuration, ravenConfig);
         services.AddRavenDb(ravenConfig, httpInterceptor);
         services.AddSingleton(sp =>
         {
@@ -40,6 +41,24 @@ public static class Bootstrapper
         services.AddSingleton<IEmailClient, AzureCommunicationServicesEmailClient>();
         services.AddScoped<IEmailService, EmailService>();
         services.AddSingleton<IReporter, Reporter>();
+    }
+
+    private static void LogConfigurationPresence(
+        ILogger logger,
+        IConfiguration configuration,
+        RavenConfig ravenConfig)
+    {
+        logger.LogInformation(
+            "Config diagnostics: AzureKeyVault set={HasKeyVault}, RavenDB urls count={RavenUrlCount}, RavenDB url[0] set={HasPrimaryRavenUrl}, RavenDB cert base64 set={HasCertificateBase64}, RavenDB cert password set={HasCertificatePassword}, ACS connection string set={HasAcsConnectionString}, Monitor from email set={HasFromEmail}, Monitor to email set={HasToEmail}, Monitor subject set={HasEmailSubject}",
+            !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("AzureKeyVault")),
+            ravenConfig.Urls.Length,
+            !string.IsNullOrWhiteSpace(configuration["RavenDB:Urls:0"]),
+            !string.IsNullOrWhiteSpace(configuration["RavenDB:CertificateBase64"]),
+            !string.IsNullOrWhiteSpace(configuration["RavenDB:CertificatePassword"]),
+            !string.IsNullOrWhiteSpace(configuration["AzureCommunicationServices:ConnectionString"]),
+            !string.IsNullOrWhiteSpace(configuration["Monitor:FromEmail"]),
+            !string.IsNullOrWhiteSpace(configuration["Monitor:ToEmail"]),
+            !string.IsNullOrWhiteSpace(configuration["Monitor:EmailSubject"]));
     }
 
     public static void AddKeyVaultConfiguration(
