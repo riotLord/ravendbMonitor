@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Servercyde.Monitoring.Core.Database;
 using Servercyde.Monitoring.Tests;
 using System.Net;
+using System.Security.Authentication;
 
 namespace Servercyde.Monitoring.Core.Tests.Database;
 
@@ -35,12 +36,16 @@ public class RavenDbConnectivityProbeTests : TestFixture
         result.HttpStatusCode.Should().Be((int)HttpStatusCode.Unauthorized);
         result.FailureStage.Should().Be("HttpRequest");
         result.ExceptionMessage.Should().Be("RavenDB probe returned HTTP 401.");
+        result.InnerExceptionType.Should().BeNull();
+        result.InnerExceptionMessage.Should().BeNull();
     }
 
     [Fact]
     public async Task Probe_Should_Return_Sanitized_Exception_Details_When_Handler_Throws()
     {
-        HttpInterceptor.AddHandler(_ => throw new HttpRequestException("client certificate rejected"));
+        HttpInterceptor.AddHandler(_ => throw new HttpRequestException(
+            "client certificate rejected",
+            new AuthenticationException("The remote certificate is invalid according to the validation procedure.")));
         var probe = Services.GetRequiredService<IRavenDbConnectivityProbe>();
 
         var result = await probe.Probe(CancellationToken.None);
@@ -50,5 +55,7 @@ public class RavenDbConnectivityProbeTests : TestFixture
         result.FailureStage.Should().Be("TlsHandshake");
         result.ExceptionType.Should().Be(nameof(HttpRequestException));
         result.ExceptionMessage.Should().Be("client certificate rejected");
+        result.InnerExceptionType.Should().Be(nameof(AuthenticationException));
+        result.InnerExceptionMessage.Should().Be("The remote certificate is invalid according to the validation procedure.");
     }
 }

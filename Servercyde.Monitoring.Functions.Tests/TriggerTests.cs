@@ -4,6 +4,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Servercyde.Monitoring.Core;
 using Servercyde.Monitoring.Core.Database;
 using System.Collections.Specialized;
+using System.Security.Authentication;
 using Telerik.JustMock;
 
 namespace Servercyde.Monitoring.Functions.Tests;
@@ -81,7 +82,9 @@ public class TriggersTests
             CertificateSource: "Base64",
             FailureStage: null,
             ExceptionType: null,
-            ExceptionMessage: null);
+            ExceptionMessage: null,
+            InnerExceptionType: null,
+            InnerExceptionMessage: null);
 
         Mock.Arrange(() => mockProbe.Probe(default))
             .Returns(Task.FromResult(probeResult));
@@ -115,7 +118,9 @@ public class TriggersTests
             CertificateSource: "Base64",
             FailureStage: "TlsHandshake",
             ExceptionType: "HttpRequestException",
-            ExceptionMessage: "client certificate rejected");
+            ExceptionMessage: "client certificate rejected",
+            InnerExceptionType: nameof(AuthenticationException),
+            InnerExceptionMessage: "The remote certificate is invalid according to the validation procedure.");
 
         Mock.Arrange(() => mockProbe.Probe(default))
             .Returns(Task.FromResult(probeResult));

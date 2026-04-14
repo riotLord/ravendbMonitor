@@ -133,9 +133,9 @@ public static class CertificateLoader
 
     private static IEnumerable<X509KeyStorageFlags> GetImportFlags()
     {
-        yield return X509KeyStorageFlags.EphemeralKeySet;
         yield return X509KeyStorageFlags.DefaultKeySet;
         yield return X509KeyStorageFlags.MachineKeySet;
+        yield return X509KeyStorageFlags.EphemeralKeySet;
     }
 
     private static bool IsFallbackException(Exception ex)

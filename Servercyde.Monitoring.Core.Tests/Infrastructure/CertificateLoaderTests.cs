@@ -60,7 +60,7 @@ public class CertificateLoaderTests : TestFixture, IDisposable
     }
 
     [Fact]
-    public void LoadFromBase64WithDiagnostics_FallsBackTo_DefaultKeySet_When_Ephemeral_Fails()
+    public void LoadFromBase64WithDiagnostics_Uses_DefaultKeySet_First()
     {
         var certificatePath = Path.Combine(CertificateDirectoryPath, $"{CertificateThumbprint}.p12");
         var certificateBase64 = Convert.ToBase64String(File.ReadAllBytes(certificatePath));
@@ -69,9 +69,30 @@ public class CertificateLoaderTests : TestFixture, IDisposable
         CertificateLoader.LoadPkcs12 = (rawBytes, password, flags) =>
         {
             attemptedFlags.Add(flags);
-            if (flags == X509KeyStorageFlags.EphemeralKeySet)
+            return X509CertificateLoader.LoadPkcs12(rawBytes, password, flags);
+        };
+
+        var result = CertificateLoader.LoadFromBase64WithDiagnostics(certificateBase64);
+
+        attemptedFlags.Should().ContainSingle()
+            .Which.Should().Be(X509KeyStorageFlags.DefaultKeySet);
+        result.KeyStorageMode.Should().Be(X509KeyStorageFlags.DefaultKeySet.ToString());
+        result.Certificate.HasPrivateKey.Should().BeTrue();
+    }
+
+    [Fact]
+    public void LoadFromBase64WithDiagnostics_FallsBackTo_MachineKeySet_When_DefaultKeySet_Fails()
+    {
+        var certificatePath = Path.Combine(CertificateDirectoryPath, $"{CertificateThumbprint}.p12");
+        var certificateBase64 = Convert.ToBase64String(File.ReadAllBytes(certificatePath));
+        var attemptedFlags = new List<X509KeyStorageFlags>();
+
+        CertificateLoader.LoadPkcs12 = (rawBytes, password, flags) =>
+        {
+            attemptedFlags.Add(flags);
+            if (flags == X509KeyStorageFlags.DefaultKeySet)
             {
-                throw new CryptographicException("Ephemeral import failed");
+                throw new CryptographicException("Default import failed");
             }
 
             return X509CertificateLoader.LoadPkcs12(rawBytes, password, flags);
@@ -80,24 +101,23 @@ public class CertificateLoaderTests : TestFixture, IDisposable
         var result = CertificateLoader.LoadFromBase64WithDiagnostics(certificateBase64);
 
         attemptedFlags.Should().ContainInOrder(
-            X509KeyStorageFlags.EphemeralKeySet,
-            X509KeyStorageFlags.DefaultKeySet);
-        result.KeyStorageMode.Should().Be(X509KeyStorageFlags.DefaultKeySet.ToString());
+            X509KeyStorageFlags.DefaultKeySet,
+            X509KeyStorageFlags.MachineKeySet);
+        result.KeyStorageMode.Should().Be(X509KeyStorageFlags.MachineKeySet.ToString());
         result.Certificate.HasPrivateKey.Should().BeTrue();
     }
 
     [Fact]
-    public void LoadWithDiagnostics_FallsBackTo_DefaultKeySet_When_FileImport_Ephemeral_Fails()
+    public void LoadWithDiagnostics_FallsBackTo_MachineKeySet_When_DefaultFileImport_Fails()
     {
         var attemptedFlags = new List<X509KeyStorageFlags>();
-        var certificatePath = Path.Combine(CertificateDirectoryPath, $"{CertificateThumbprint}.p12");
 
         CertificateLoader.LoadPkcs12CollectionFromFile = (path, password, flags) =>
         {
             attemptedFlags.Add(flags);
-            if (flags == X509KeyStorageFlags.EphemeralKeySet)
+            if (flags == X509KeyStorageFlags.DefaultKeySet)
             {
-                throw new CryptographicException("Ephemeral file import failed");
+                throw new CryptographicException("Default file import failed");
             }
 
             return X509CertificateLoader.LoadPkcs12CollectionFromFile(path, password, flags);
@@ -106,9 +126,9 @@ public class CertificateLoaderTests : TestFixture, IDisposable
         var result = CertificateLoader.LoadWithDiagnostics(CertificateThumbprint);
 
         attemptedFlags.Should().ContainInOrder(
-            X509KeyStorageFlags.EphemeralKeySet,
-            X509KeyStorageFlags.DefaultKeySet);
-        result.KeyStorageMode.Should().Be(X509KeyStorageFlags.DefaultKeySet.ToString());
+            X509KeyStorageFlags.DefaultKeySet,
+            X509KeyStorageFlags.MachineKeySet);
+        result.KeyStorageMode.Should().Be(X509KeyStorageFlags.MachineKeySet.ToString());
         result.Certificate.HasPrivateKey.Should().BeTrue();
     }
 

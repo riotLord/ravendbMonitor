@@ -34,7 +34,9 @@ public class RavenDbConnectivityProbe(
                 CertificateSource: certificateDiagnostics.Source,
                 FailureStage: "Configuration",
                 ExceptionType: nameof(InvalidOperationException),
-                ExceptionMessage: "No RavenDB URL is configured.");
+                ExceptionMessage: "No RavenDB URL is configured.",
+                InnerExceptionType: null,
+                InnerExceptionMessage: null);
             logger.LogError("RavenDB connectivity probe failed because no RavenDB URL is configured.");
             return missingConfigResult;
         }
@@ -60,7 +62,9 @@ public class RavenDbConnectivityProbe(
                 ExceptionType: null,
                 ExceptionMessage: response.IsSuccessStatusCode
                     ? null
-                    : $"RavenDB probe returned HTTP {(int)response.StatusCode}.");
+                    : $"RavenDB probe returned HTTP {(int)response.StatusCode}.",
+                InnerExceptionType: null,
+                InnerExceptionMessage: null);
 
             logger.LogInformation(
                 "RavenDB connectivity probe completed. Success={Success}, HttpStatusCode={HttpStatusCode}, Url={RavenDbUrl}",
@@ -86,14 +90,18 @@ public class RavenDbConnectivityProbe(
                 CertificateSource: certificateDiagnostics.Source,
                 FailureStage: "TlsHandshake",
                 ExceptionType: ex.GetType().Name,
-                ExceptionMessage: ex.Message);
+                ExceptionMessage: ex.Message,
+                InnerExceptionType: ex.InnerException?.GetType().Name,
+                InnerExceptionMessage: ex.InnerException?.Message);
 
             logger.LogError(
                 ex,
-                "RavenDB connectivity probe failed during TLS/authentication. Url={RavenDbUrl}, ExceptionType={ExceptionType}, Message={ExceptionMessage}",
+                "RavenDB connectivity probe failed during TLS/authentication. Url={RavenDbUrl}, ExceptionType={ExceptionType}, Message={ExceptionMessage}, InnerExceptionType={InnerExceptionType}, InnerExceptionMessage={InnerExceptionMessage}",
                 result.RavenDbUrl,
                 result.ExceptionType,
-                result.ExceptionMessage);
+                result.ExceptionMessage,
+                result.InnerExceptionType,
+                result.InnerExceptionMessage);
             return result;
         }
     }
@@ -114,7 +122,9 @@ public sealed record RavenDbConnectivityProbeResult(
     string? CertificateSource,
     string? FailureStage,
     string? ExceptionType,
-    string? ExceptionMessage)
+    string? ExceptionMessage,
+    string? InnerExceptionType,
+    string? InnerExceptionMessage)
 {
     public bool Success => ConfigurationLoaded
         && (!CertificateConfigured || (CertificateLoaded && PrivateKeyPresent))
