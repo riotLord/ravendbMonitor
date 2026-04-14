@@ -9,6 +9,7 @@ on:
 env:
   AZURE_FUNCTIONAPP_NAME: scnet-rdb-mon
   AZURE_FUNCTIONAPP_PROJECT_PATH: ./Servercyde.Monitoring.Functions
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: ./Servercyde.Monitoring.Functions/bin/Release/net9.0
   DOTNET_VERSION: 9.0.x
 
 jobs:
@@ -37,7 +38,6 @@ jobs:
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: ${{ env.AZURE_FUNCTIONAPP_PROJECT_PATH }}
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
           sku: flexconsumption
-          remote-build: true
