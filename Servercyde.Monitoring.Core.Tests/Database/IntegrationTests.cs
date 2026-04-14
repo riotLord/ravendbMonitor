@@ -38,6 +38,11 @@ public class IntegrationTests
         configurationBuilder.AddEnvironmentVariables();
         Bootstrapper.ConfigureServices(logger, Services, configurationBuilder);
 
+        var probe = Services.GetRequiredService<IRavenDbConnectivityProbe>();
+        var probeResult = await probe.Probe(CancellationToken.None);
+        probeResult.Success.Should().BeTrue();
+        Console.WriteLine(JsonConvert.SerializeObject(probeResult, Formatting.Indented));
+
         var sut = Services.GetRequiredService<RavenDbMonitor>();
         var summaries = await sut.GetSummaries("default", CancellationToken.None);
         summaries.Should().NotBeEmpty();

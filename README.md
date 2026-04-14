@@ -16,6 +16,7 @@
 1. The Functions host starts in [`Servercyde.Monitoring.Functions/Program.cs`](D:\DEV\ravendbMonitor\Servercyde.Monitoring.Functions\Program.cs) and calls the bootstrapper in the core project.
 2. [`Bootstrapper`](D:\DEV\ravendbMonitor\Servercyde.Monitoring\Infrastructure\Bootstrapper.cs) binds configuration, optionally loads secrets from Azure Key Vault, and registers the RavenDB and Azure Communication Services email services.
 3. [`Triggers`](D:\DEV\ravendbMonitor\Servercyde.Monitoring.Functions\Triggers.cs) exposes the compatibility-sensitive HTTP function `CheckRavenDbAlertsHttp`.
+   It also exposes `CheckRavenDbConnectionHttp` for function-auth RavenDB certificate and TLS diagnostics without sending email.
 4. [`Reporter`](D:\DEV\ravendbMonitor\Servercyde.Monitoring\Reporter.cs) gathers summaries from RavenDB, builds an HTML report, and sends the result by email.
 5. [`RavenDbMonitor`](D:\DEV\ravendbMonitor\Servercyde.Monitoring\Database\RavenDbMonitor.cs) pulls database lists, notifications, and zero-retry queued commands from each configured RavenDB server.
 
@@ -66,6 +67,8 @@ dotnet run --project .\Servercyde.Monitoring.Functions\Servercyde.Monitoring.Fun
 ```
 
 The HTTP function accepts an optional `profile` query string. Passing `profile=simulate` uses generated fake data so the reporting flow can be exercised without a live RavenDB instance.
+
+For certificate/TLS debugging, call `CheckRavenDbConnectionHttp` first. It validates the configured RavenDB URL, reports certificate metadata and storage mode, and performs the same minimal `/databases` HTTPS request used by the live path without sending email.
 
 ## CI
 

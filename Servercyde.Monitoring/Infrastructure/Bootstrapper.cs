@@ -18,6 +18,8 @@ public static class Bootstrapper
         HttpMessageHandler? httpInterceptor = null
     )
     {
+        services.AddLogging();
+
         var keyVaultName = Environment.GetEnvironmentVariable("AzureKeyVault");
         AddKeyVaultConfiguration(logger, configurationBuilder, keyVaultName);
 
@@ -30,7 +32,7 @@ public static class Bootstrapper
 
         var ravenConfig = new RavenConfig(); ravenConfigSection.Bind(ravenConfig);
         LogConfigurationPresence(logger, configuration, ravenConfig);
-        services.AddRavenDb(ravenConfig, httpInterceptor);
+        services.AddRavenDb(ravenConfig, httpInterceptor, logger);
         services.AddSingleton(sp =>
         {
             var connectionString = sp.GetRequiredService<IOptions<AzureCommunicationServicesConfig>>().Value.ConnectionString;
@@ -41,6 +43,7 @@ public static class Bootstrapper
         services.AddSingleton<IEmailClient, AzureCommunicationServicesEmailClient>();
         services.AddScoped<IEmailService, EmailService>();
         services.AddSingleton<IReporter, Reporter>();
+        services.AddScoped<IRavenDbConnectivityProbe, RavenDbConnectivityProbe>();
     }
 
     private static void LogConfigurationPresence(
@@ -59,6 +62,14 @@ public static class Bootstrapper
             !string.IsNullOrWhiteSpace(configuration["Monitor:FromEmail"]),
             !string.IsNullOrWhiteSpace(configuration["Monitor:ToEmail"]),
             !string.IsNullOrWhiteSpace(configuration["Monitor:EmailSubject"]));
+
+        logger.LogInformation(
+            "RavenDB certificate configuration source: {CertificateSource}",
+            !string.IsNullOrWhiteSpace(ravenConfig.CertificateBase64)
+                ? "Base64"
+                : !string.IsNullOrWhiteSpace(ravenConfig.CertificateThumbprint)
+                    ? "Thumbprint"
+                    : "None");
     }
 
     public static void AddKeyVaultConfiguration(
