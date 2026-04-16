@@ -20,6 +20,23 @@
 4. [`Reporter`](D:\DEV\ravendbMonitor\Servercyde.Monitoring\Reporter.cs) gathers summaries from RavenDB, builds an HTML report, and sends the result by email.
 5. [`RavenDbMonitor`](D:\DEV\ravendbMonitor\Servercyde.Monitoring\Database\RavenDbMonitor.cs) pulls database lists, notifications, and zero-retry queued commands from each configured RavenDB server.
 
+## Architecture
+
+The current code follows a small orchestration pattern centered on `Reporter`.
+
+- The Azure Functions trigger layer stays thin and delegates work into the core project.
+- `Reporter` is the main orchestration class for the alert-reporting path.
+- `Reporter` depends on `IMonitor` and `IEmailService`, which allows the reporting flow to stay separated from concrete infrastructure concerns.
+- The connectivity probe flow is separate from the reporting flow and is handled by `IRavenDbConnectivityProbe`.
+
+### Application Architecture
+
+![RavenDB Monitor architecture](docs/images/architecture-diagram.jpg)
+
+### CI/CD Flow
+
+![RavenDB Monitor CI/CD flow](docs/images/cicd-diagram.jpg)
+
 ## Configuration
 
 The current code expects these configuration sections and environment values:
